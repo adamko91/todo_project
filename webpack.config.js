@@ -1,5 +1,6 @@
+//export the configuration object
 module.exports = {
-    context: __dirname + '/app',
+    context: __dirname + '/app', //absolute path!
     entry: './index.js',
     output: {
       path: __dirname + '/app',
@@ -8,8 +9,8 @@ module.exports = {
     
     module: {
       loaders: [
-        {test: /\.js$/, loader: 'babel', exclude: /node_modules/},
-        {test: /\.css$/, loader: 'style!css'},
+        {test: /\.js$/, loader: 'babel', exclude: /node_modules/}, // babel loader is used for "js" files
+        {test: /\.css$/, loader: 'style!css'}, // => "style" and "css" loader is used for ".css" files
         {test: /\.html$/, loader: 'html', exclude: /node_modules/},
         {
           test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
