@@ -5,6 +5,9 @@ import uirouter from 'angular-ui-router';
 
 import routing from './config';
 
+import 'firebase';
+import angularFire from 'angularfire';
+
 import log from './logowanie';
 
 const ngModule = angular
