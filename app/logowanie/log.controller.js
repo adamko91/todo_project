@@ -21,29 +21,32 @@ export default class LogController{
       this.userFilter={};
     else 
       this.userFilter={user: filter};
+      console.log(filter);
   }
   
   ChangeStateFilter(filter){
       this.stateFilter={state: filter};
   }
   
-  list_tasks(selectedUser,type_of_state,flag){
+  Statats(selectedUser){
      this.all_task =  this.LogService.getTasks();
+     this.my_done=0;
+     this.my_active=0;
+     this.global_done=0;
+     this.global_active=0;
      
       for(var i=0;i<this.all_task.length;i++){
         
             if(this.all_task[i].user == selectedUser){
-              if(this.all_task[i].state == type_of_state)
-               console.log (this.all_task[i]);
-              else if (type_of_state == "all") 
-               console.log (this.all_task[i]);
+              if(this.all_task[i].state == "done")
+                this.my_done = this.my_done + 1;
+              else  
+                this.my_active = this.my_active + 1;
             }
-            else if (flag == "all"){ 
-             if(this.all_task[i].state == type_of_state)
-               console.log (this.all_task[i]);
-              else if (type_of_state == "all") 
-               console.log (this.all_task[i]);
-             }
+             if(this.all_task[i].state == "done")
+               this.global_done = this.global_done + 1;
+              else 
+                this.global_active = this.global_active + 1;
       }
   }
   

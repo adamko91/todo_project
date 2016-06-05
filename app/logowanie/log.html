@@ -20,7 +20,7 @@
     
     <h3>Show me</h3>  
       <lable>
-        <input type="radio" ng-model="user_type" value="logged_user" ng-change="logController.ChangeUserFilter(user_type)" >
+        <input type="radio" ng-model="user_type" value="logged_user" ng-change="logController.ChangeUserFilter(logged_user)" >
          My list
       </lable> <br/>
       <lable>
@@ -49,3 +49,10 @@
  <button class="destroy" ng-click="logController.DestroyTask(task)">Destroy</button>
  </div>
  </li>
+ 
+ <button class="destroy" ng-click="logController.Statats(logged_user)">Statistics</button> <br/>
+my_done: {{ logController.my_done }} <br/>
+my_active: {{ logController.my_active }} <br/>
+global_done: {{ logController.global_done }} <br/>
+global_active: {{ logController.global_active }} <br/>
+ 
