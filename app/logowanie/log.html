@@ -1,9 +1,8 @@
-
     <div class="row">
       <div class="col-lg-6">
         <div class="input-group">
           <span class="input-group-btn">
-            <button class="btn btn-secondary" type="button" ng-click="logController.changeName()" >Go!</button>
+            <button class="btn btn-secondary" type="button" >Go!</button>
           </span>
           <input type="text" class="form-control" placeholder="e-mail address" ng-model="logged_user">
         </div>
@@ -13,9 +12,37 @@
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Task to do" ng-model="task_description">
           <span class="input-group-btn">
-            <button class="btn btn-secondary" type="button" ng-click="logController.addTask(task_description,logged_user)">Add!</button>
+            <button class="btn btn-secondary" type="button" ng-click="logController.addTask(logged_user,task_description)">Add!</button>
           </span>
         </div>
       </div>
     </div>
     <a>{{logged_user}}</a>
+    
+        <div class="col-lg-6">
+            <button class="btn btn-secondary" type="button" ng-click="logController.list_tasks(logged_user,type_of_state,'all')">List_all</button>
+        </div>
+       
+        <div class="col-lg-6">
+            <button class="btn btn-secondary" type="button" ng-click="logController.list_tasks(logged_user,type_of_state,'user')">List_user</button>
+        </div> 
+        
+  <h3>Show me</h3>    
+  <label>
+    <input type="radio" ng-model="type_of_state" value="all">
+    All
+  </label>
+  <label>
+    <input type="radio" ng-model="type_of_state" value="active">
+    Active
+  </label>
+  <label>
+    <input type="radio" ng-model="type_of_state" value="done">
+    Done
+  </label>
+  
+ <li ng-repeat="all_task in logController.all_task | filter : user : logged_user | filter : state : type_of_state" class="list-group" >
+   {{all_task.user}} {{all_task.description}} {{all_task.state }}
+   
+ <button class="destroy">Destroy</button>
+ </li>

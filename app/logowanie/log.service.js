@@ -4,20 +4,21 @@ export default class LogService {
   constructor($firebaseArray) {
         this.firebaseArray = $firebaseArray;
         this.ref = new Firebase("https://adamkotododb.firebaseio.com/");
-        this.items = $firebaseArray(this.ref);
+        this.item = $firebaseArray(this.ref);
   }
 
  add(task)
     {
          console.log(task);
-        this.items.$add({
+        this.item.$add({
            'user': task.user,
            'description': task.descriptions,
            'state': task.state
         }); 
     }
   
-  addUser(user) {
+  getTasks() {
+    return this.item;
   }
   
 }
