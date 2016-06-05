@@ -1,10 +1,10 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="input-group">
-          <span class="input-group-btn">
-            <button class="btn btn-secondary" type="button" >Go!</button>
-          </span>
-          <input type="text" class="form-control" placeholder="e-mail address" ng-model="logged_user">
+            <input type="text" class="form-control" placeholder="e-mail address" ng-model="logged_user">
+           <span class="input-group-btn">
+           <button class="btn btn-secondary" type="button" >Go!</button>
+           </span>
         </div>
       </div>
       
@@ -17,29 +17,29 @@
         </div>
       </div>
     </div>
-    <a>{{logged_user}}</a>
     
-        <div class="col-lg-6">
-            <button class="btn btn-secondary" type="button" ng-click="logController.ChangeUserFilter('all')">List_all</button>
-        </div>
-       
-        <div class="col-lg-6">
-            <button class="btn btn-secondary" type="button" ng-click="logController.ChangeUserFilter(logged_user)">List_user</button>
-        </div> 
-        
-  <h3>Show me</h3>    
-  <label>
-    <input type="radio" ng-model="type_of_state" value="" ng-change="logController.ChangeStateFilter(type_of_state)">
-    All
-  </label>
-  <label>
-    <input type="radio" ng-model="type_of_state" value="active" ng-change="logController.ChangeStateFilter(type_of_state)">
-    Active
-  </label>
-  <label>
-    <input type="radio" ng-model="type_of_state" value="done" ng-change="logController.ChangeStateFilter(type_of_state)">
-    Done
-  </label>
+    <h3>Show me</h3>  
+      <lable>
+        <input type="radio" ng-model="user_type" value="logged_user" ng-change="logController.ChangeUserFilter(user_type)" >
+         My list
+      </lable> <br/>
+      <lable>
+        <input type="radio" ng-model="user_type" value='all' ng-change="logController.ChangeUserFilter(user_type)" >
+        All list
+      </lable> <br/>
+    
+        <label>
+          <input type="radio" ng-model="type_of_state" value="" ng-change="logController.ChangeStateFilter(type_of_state)">
+          All
+        </label>
+        <label>
+          <input type="radio" ng-model="type_of_state" value="active" ng-change="logController.ChangeStateFilter(type_of_state)">
+          Active
+        </label>
+        <label>
+          <input type="radio" ng-model="type_of_state" value="done" ng-change="logController.ChangeStateFilter(type_of_state)">
+          Done
+        </label>
   
  <li ng-repeat="task in logController.all_task | filter:logController.userFilter | filter:logController.stateFilter" class="list-group" >
    {{task.user}} {{task.description}} {{task.state }}
