@@ -4,6 +4,6 @@ export default function routes($stateProvider) {
       url: '/',
       template: require('./log.html'),
       controller: 'LogController',
-      controllerAs: 'log'
+      controllerAs: 'logController'
     });
 }

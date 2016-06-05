@@ -1,9 +1,22 @@
 export default class LogController{
-  constructor() {
-    this.name = 'clic';
+  constructor(LogService, $stateParams, $scope, $firebaseObject) {
+    
+  this.selectedUser = $scope.logged_user;
+  this.taskDescription = $scope.task_description;
+  this.LogService = LogService;
+  }
+  
+  addTask(selectedUser,taskDescription){
+    this.LogService.add({
+        user: selectedUser,
+        descriptions: taskDescription,
+        state: false
+    });
   }
 
   changeName() {
-    this.name = 'clic_2';
+    this.name =  this.selectedUser;
+    console.log("changeName", this.selectedUser);
   }
+
 }

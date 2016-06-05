@@ -1,2 +1,21 @@
-<h1>{{log.name}}</h1>
-<button ng-click="log.changeName()">Test</button>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button class="btn btn-secondary" type="button" ng-click="logController.changeName()" >Go!</button>
+          </span>
+          <input type="text" class="form-control" placeholder="e-mail address" ng-model="logged_user">
+        </div>
+      </div>
+      
+    <div class="col-lg-6">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Task to do" ng-model="task_description">
+          <span class="input-group-btn">
+            <button class="btn btn-secondary" type="button" ng-click="logController.addTask(task_description,logged_user)">Add!</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <a>{{logged_user}}</a>

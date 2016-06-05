@@ -18,7 +18,6 @@
       "author": "Adam_Kozubal",
       "license": "ISC", 
       "devDependencies": {
-        "angularfire": "^1.2.0",
         "babel-core": "^6.5.2",
         "babel-loader": "^6.2.3",
         "babel-preset-es2015": "^6.5.0",
@@ -31,6 +30,7 @@
         "webpack-dev-server": "^1.14.1"
       },
       "dependencies": {
+        "angularfire": "^1.2.0",
         "angular": "^1.5.2",
         "angular-ui-router": "^0.2.18",
         "bootstrap": "^3.3.6",
