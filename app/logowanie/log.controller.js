@@ -1,3 +1,4 @@
+
 export default class LogController{
   constructor(LogService, $stateParams, $scope, $firebaseObject) {
     
@@ -5,7 +6,6 @@ export default class LogController{
   this.taskDescription = $scope.task_description;
   this.LogService = LogService;
   this.all_task = LogService.getTasks();
-  this.userFilter={};
   }
   
   addTask(selectedUser,taskDescription){
@@ -20,9 +20,12 @@ export default class LogController{
     if(filter=="all")
       this.userFilter={};
     else 
-      this.userFilter=filter;
+      this.userFilter={user: filter};
   }
   
+  ChangeStateFilter(filter){
+      this.stateFilter={state: filter};
+  }
   
   list_tasks(selectedUser,type_of_state,flag){
      this.all_task =  this.LogService.getTasks();
@@ -54,6 +57,13 @@ export default class LogController{
   
   DestroyTask(task){
     this.LogService.destroy(task);
+  }
+  
+  NotUserTask(task,logged_user){
+    if (task.user == logged_user)
+      return false;
+    else  
+      return true;
   }
 
 }
