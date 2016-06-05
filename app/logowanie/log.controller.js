@@ -5,6 +5,7 @@ export default class LogController{
   this.taskDescription = $scope.task_description;
   this.LogService = LogService;
   this.all_task = LogService.getTasks();
+  this.userFilter={};
   }
   
   addTask(selectedUser,taskDescription){
@@ -14,6 +15,14 @@ export default class LogController{
         state: "active"
     });
   }
+  
+  ChangeUserFilter(filter){
+    if(filter=="all")
+      this.userFilter={};
+    else 
+      this.userFilter=filter;
+  }
+  
   
   list_tasks(selectedUser,type_of_state,flag){
      this.all_task =  this.LogService.getTasks();
@@ -35,11 +44,16 @@ export default class LogController{
       }
   }
   
-  change_status(task){
+  ChangeStatus(task){
     if(task.state == "active")
-      task.state == "done";
+      task.state = "done";
     else if(task.state == "done")
-      task.state == "active";
+      task.state = "active";
+      this.LogService.save(task);
   }
   
+  DestroyTask(task){
+    this.LogService.destroy(task);
+  }
+
 }

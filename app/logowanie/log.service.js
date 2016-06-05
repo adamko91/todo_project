@@ -7,8 +7,7 @@ export default class LogService {
         this.item = $firebaseArray(this.ref);
   }
 
- add(task)
-    {
+ add(task){
          console.log(task);
         this.item.$add({
            'user': task.user,
@@ -19,6 +18,14 @@ export default class LogService {
   
   getTasks() {
     return this.item;
+  }
+  
+  save(task){
+    this.item.$save(task);
+  }
+  
+  destroy(task){
+     this.item.$remove(task);
   }
   
 }

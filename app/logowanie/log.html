@@ -20,16 +20,16 @@
     <a>{{logged_user}}</a>
     
         <div class="col-lg-6">
-            <button class="btn btn-secondary" type="button" ng-click="logController.list_tasks(logged_user,type_of_state,'all')">List_all</button>
+            <button class="btn btn-secondary" type="button" ng-click="logController.ChangeUserFilter('all')">List_all</button>
         </div>
        
         <div class="col-lg-6">
-            <button class="btn btn-secondary" type="button" ng-click="logController.list_tasks(logged_user,type_of_state,'user')">List_user</button>
+            <button class="btn btn-secondary" type="button" ng-click="logController.ChangeUserFilter(logged_user)">List_user</button>
         </div> 
         
   <h3>Show me</h3>    
   <label>
-    <input type="radio" ng-model="type_of_state" value="all">
+    <input type="radio" ng-model="type_of_state" value="">
     All
   </label>
   <label>
@@ -41,8 +41,8 @@
     Done
   </label>
   
- <li ng-repeat="all_task in logController.all_task | filter : user : logged_user | filter : state : type_of_state" class="list-group" >
+ <li ng-repeat="all_task in logController.all_task | filter : user : this.userFilter | filter : state : type_of_state" class="list-group" >
    {{all_task.user}} {{all_task.description}} {{all_task.state }}
-   
- <button class="destroy">Destroy</button>
+ <button class="btn btn-secondary" ng-click="logController.ChangeStatus(all_task)" >Change status</button>
+ <button class="destroy" ng-click="logController.DestroyTask(all_task)">Destroy</button>
  </li>
