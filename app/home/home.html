@@ -1,13 +1,25 @@
 <body data-ng-controller="homeController">
-<div class="panel">
-		<h3 class="panel-heading">Login form</h3>
-		<form name="homeForm" class="panel-body" data-ng-hide="correctEmail" data-ng-submit="homeController.add_user(logged_user)">
-				<fieldset class="well">
-					<div <div class="form-group">
-						<label for="email">E-mail: </label>
-						<input type="email" required name="email" class="form-control" data-ng-pattern="emailPattern" ng-model="logged_user" placeholder="e-mail address">
-					</div>
-					<input type="submit" id="submit" value="Submit" />
-					{{homeController.add_user(logged_user)}}
+
+<div ng-switch="homeController.if_logged">
+	<div ng-switch-when='undefined'>	
+		<div class="panel">
+				<h3 class="panel-heading">Login form</h3>
+				<form name="homeForm" class="panel-body" data-ng-hide="correctEmail" data-ng-submit="homeController.add_user(logged_user)">
+						<fieldset class="well">
+							<div <div class="form-group">
+								<label for="email">E-mail: </label>
+								<input type="email" required name="email" class="form-control" data-ng-pattern="emailPattern" ng-model="logged_user" placeholder="e-mail address">
+							</div>
+							<input type="submit" id="submit" value="Submit" />
+		</div>
+	</div>
+
+	<div ng-switch-when='defined'>
+		        <a ui-sref="log">ToDo</a>
+		        <div class="container">
+		        <ui-view></ui-view>
+		   		 </div>
+	</div>
 </div>
+		
 </body>
