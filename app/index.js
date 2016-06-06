@@ -4,12 +4,14 @@ import angular from 'angular';
 import uirouter from 'angular-ui-router';
 import routing from './config';
 
-
-import log from './logowanie';
+ 
+import log from  './logowanie';
+import home from './home';
 
 const ngModule = angular
         .module('app', [
           uirouter, 
-          log
+          log,
+          home
         ])
         .config(routing);

@@ -1,16 +1,17 @@
 
 export default class LogController{
-  constructor(LogService, $stateParams, $scope, $firebaseObject) {
+  constructor(LogService, $stateParams, $scope, $firebaseObject,HomeService) {
     
-  this.selectedUser = $scope.logged_user;
+  this.selectedUser = HomeService.get_user();
   this.taskDescription = $scope.task_description;
   this.LogService = LogService;
   this.all_task = LogService.getTasks();
+  this.HomeService_get_user = HomeService.get_user();
   }
   
-  addTask(selectedUser,taskDescription){
+  addTask(taskDescription){
     this.LogService.add({
-        user: selectedUser,
+        user: this.selectedUser,
         descriptions: taskDescription,
         state: "active"
     });
@@ -20,15 +21,14 @@ export default class LogController{
     if(filter=="all")
       this.userFilter={};
     else 
-      this.userFilter={user: filter};
-      console.log(filter);
+      this.userFilter={user: this.selectedUser};
   }
   
   ChangeStateFilter(filter){
       this.stateFilter={state: filter};
   }
   
-  Statats(selectedUser){
+  Statats(){
      this.all_task =  this.LogService.getTasks();
      this.my_done=0;
      this.my_active=0;
@@ -37,7 +37,7 @@ export default class LogController{
      
       for(var i=0;i<this.all_task.length;i++){
         
-            if(this.all_task[i].user == selectedUser){
+            if(this.all_task[i].user == this.selectedUser){
               if(this.all_task[i].state == "done")
                 this.my_done = this.my_done + 1;
               else  
@@ -62,8 +62,12 @@ export default class LogController{
     this.LogService.destroy(task);
   }
   
-  NotUserTask(task,logged_user){
-    if (task.user == logged_user)
+  GetUser(){
+    return this.HomeService_get_user;
+  }
+  
+  NotUserTask(task){
+    if (task.user == this.selectedUser)
       return false;
     else  
       return true;

@@ -1,18 +1,9 @@
     <div class="row">
-      <div class="col-lg-6">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="e-mail address" ng-model="logged_user">
-           <span class="input-group-btn">
-           <button class="btn btn-secondary" type="button" >Go!</button>
-           </span>
-        </div>
-      </div>
-      
     <div class="col-lg-6">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Task to do" ng-model="task_description">
           <span class="input-group-btn">
-            <button class="btn btn-secondary" type="button" ng-click="logController.addTask(logged_user,task_description)">Add!</button>
+            <button class="btn btn-secondary" type="button" ng-click="logController.addTask(task_description)">Add!</button>
           </span>
         </div>
       </div>
@@ -20,7 +11,7 @@
     
     <h3>Show me</h3>  
       <lable>
-        <input type="radio" ng-model="user_type" value="logged_user" ng-change="logController.ChangeUserFilter(logged_user)" >
+        <input type="radio" ng-model="user_type" value="logged_user" ng-change="logController.ChangeUserFilter()" >
          My list
       </lable> <br/>
       <lable>
@@ -44,13 +35,13 @@
  <li ng-repeat="task in logController.all_task | filter:logController.userFilter | filter:logController.stateFilter" class="list-group" >
    {{task.user}} {{task.description}} {{task.state }}
  
- <div ng-hide="logController.NotUserTask(task,logged_user)"> 
+ <div ng-hide="logController.NotUserTask(task)"> 
  <button class="btn btn-secondary" ng-click="logController.ChangeStatus(task)" >Change status</button>
  <button class="destroy" ng-click="logController.DestroyTask(task)">Destroy</button>
  </div>
  </li>
  
- <button class="destroy" ng-click="logController.Statats(logged_user)">Statistics</button> <br/>
+ <button class="destroy" ng-click="logController.Statats()">Statistics</button> <br/>
 my_done: {{ logController.my_done }} <br/>
 my_active: {{ logController.my_active }} <br/>
 global_done: {{ logController.global_done }} <br/>
