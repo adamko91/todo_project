@@ -10,6 +10,11 @@ export default class HomeController{
     this.if_logged = "defined";
   }
   
+  change_if_logged(){
+   this.if_logged = "undefined";
+   console.log("if_logged");
+  } 
+  
   
 }
   
