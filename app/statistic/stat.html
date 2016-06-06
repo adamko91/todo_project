@@ -1,3 +1,5 @@
+<body ng-app="app" data-ng-controller="statController">
+      
   <nav class="navbar navbar-default">
           <div class="container-fluid">
             <ul class="nav navbar-nav">
@@ -9,9 +11,10 @@
           </div>
         </nav>
 
-{{statController.Statats}}   
-my_done: {{ statController.my_done }} <br/>
-my_active: {{ statController.my_active }} <br/>
-global_done: {{ statController.global_done }} <br/>
-global_active: {{ statController.global_active }} <br/>
+{{ statController.Statats() }}   
+my_done: {{ statController.my_done }} ( {{statController.my_done_proc| number : 2}} %) <br/>
+my_active: {{ statController.my_active }} ( {{statController.my_active_proc| number : 2}} %)<br/>
+global_done: {{ statController.global_done }} ( {{statController.global_done_proc| number : 2}} %)<br/>
+global_active: {{ statController.global_active }} ( {{statController.global_active_proc | number : 2 }} %)<br/>
 
+</body>

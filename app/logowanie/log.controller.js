@@ -8,7 +8,6 @@ export default class LogController{
   this.HomeService = HomeService;
   this.selectedUser = this.HomeService.user;
    
-  console.log("log_controler_construktor",this.selectedUser);
   }
   
   addTask(taskDescription){
@@ -24,7 +23,6 @@ export default class LogController{
       this.userFilter={};
     else 
       this.userFilter={user: this.selectedUser};
-      console.log(this.selectedUser);
   }
   
   ChangeStateFilter(filter){
