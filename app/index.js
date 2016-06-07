@@ -5,7 +5,7 @@ import uirouter from 'angular-ui-router';
 import routing from './config';
 
 import home from './home'; 
-import log from  './logowanie';
+import todo from  './todo';
 import stat from './statistic';
 
 
@@ -14,6 +14,6 @@ const ngModule = angular
           uirouter, 
           home,
           stat,
-          log
+          todo
         ])
         .config(routing);

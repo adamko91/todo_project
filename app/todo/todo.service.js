@@ -1,6 +1,6 @@
 /*global Firebase */
 
-export default class LogService {
+export default class TodoService {
   constructor($firebaseArray) {
         this.firebaseArray = $firebaseArray;
         this.ref = new Firebase("https://adamkotododb.firebaseio.com/");

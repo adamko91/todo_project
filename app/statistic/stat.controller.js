@@ -1,11 +1,11 @@
 export default class StatController{
-  constructor(LogService,HomeService) {
-      this.LogService  = LogService;
+  constructor(TodoService,HomeService) {
+      this.TodoService  = TodoService;
       this.HomeService = HomeService;
   }
 
   Statats(){
-     this.all_task =  this.LogService.getTasks();
+     this.all_task =  this.TodoService.getTasks();
      this.selectedUser = this.HomeService.user;
      this.my_done=0;
      this.my_active=0;

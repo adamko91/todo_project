@@ -1,17 +1,17 @@
 
-export default class LogController{
-  constructor(LogService, $stateParams, $scope, $firebaseObject,HomeService) {
+export default class TodoController{
+  constructor(TodoService, $stateParams, $scope, $firebaseObject,HomeService) {
     
   this.taskDescription = $scope.task_description;
-  this.LogService = LogService;
-  this.all_task = LogService.getTasks();
+  this.TodoService = TodoService;
+  this.all_task = TodoService.getTasks();
   this.HomeService = HomeService;
   this.selectedUser = this.HomeService.user;
    
   }
   
   addTask(taskDescription){
-    this.LogService.add({
+    this.TodoService.add({
         user: this.selectedUser,
         descriptions: taskDescription,
         state: "active"
@@ -34,15 +34,14 @@ export default class LogController{
       task.state = "done";
     else if(task.state == "done")
       task.state = "active";
-      this.LogService.save(task);
+      this.TodoService.save(task);
   }
   
   DestroyTask(task){
-    this.LogService.destroy(task);
+    this.TodoService.destroy(task);
   }
   
   GetUser(){
-    console.log("get_user_log.controler")
     return this.selectedUser;
   }
   

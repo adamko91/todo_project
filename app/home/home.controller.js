@@ -14,7 +14,6 @@ export default class HomeController{
   
   change_if_logged(){
    this.if_logged = "undefined";
-   console.log("if_logged");
   } 
   
   

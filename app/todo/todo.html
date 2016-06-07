@@ -1,22 +1,22 @@
 		  <nav class="navbar navbar-inverse">
 			  <div class="container-fluid">
 			    <ul class="nav navbar-nav">
-			      <li><a ui-sref="log">To Do</a></li>
+			      <li><a ui-sref="todo">To Do</a></li>
 			      <li><a ui-sref="stat">Statistic</a></li>
 			    </ul>
 			    <ul class="nav navbar-nav navbar-right">
-			      <li><a>{{logController.selectedUser}}</a></li>
+			      <li><a>{{todoController.selectedUser}}</a></li>
 			      <li><a ui-sref="home"><span class="glyphicon glyphicon-log-in"></span>  Logout</a></li>
 			    </ul>
 			  </div>
-			</nav> 
+			</nav>    
   
     <div class="row">
     <div class="col-lg-6">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Task to do ..." ng-model="task_description">
           <span class="input-group-btn">
-            <button class="btn btn-secondary" type="button" ng-click="logController.addTask(task_description)">Add!</button>
+          <button class="btn btn-secondary" type="button" ng-click="todoController.addTask(task_description)">Add!</button>
           </span>
         </div>
       </div>
@@ -24,11 +24,11 @@
     
     <h3>Show me</h3>  
       <lable>
-        <input type="radio" ng-model="user_type" value="logged_user" ng-change="logController.ChangeUserFilter()" >
+        <input type="radio" ng-model="user_type" value="todoged_user" ng-change="todoController.ChangeUserFilter()" >
          My list
       </lable> <br/>
       <lable>
-        <input type="radio" ng-model="user_type" value='all' ng-change="logController.ChangeUserFilter(user_type)" >
+        <input type="radio" ng-model="user_type" value='all' ng-change="todoController.ChangeUserFilter(user_type)" >
         All list
       </lable> <br/> <br/>
     
@@ -42,29 +42,28 @@
         <th>Action(owner)</th>
       </tr>
     </thead>
-    <tbody ng-repeat="task in logController.all_task | filter:logController.userFilter | filter:logController.stateFilter">
+    <tbody ng-repeat="task in todoController.all_task | filter:todoController.userFilter | filter:todoController.stateFilter">
     <tr>
         
         <td>{{task.description}}</td>
         <td>{{task.state}}</td>
         <td>{{task.user}}</td>
         <td>  
-          <button ng-hide="logController.NotUserTask(task)" class="destroy" ng-click="logController.ChangeStatus(task)" >Change status</button> 
-          <button ng-hide="logController.NotUserTask(task)" class="destroy" ng-click="logController.DestroyTask(task)">Destroy</button>
+          <button ng-hide="todoController.NotUserTask(task)" class="destroy" ng-click="todoController.ChangeStatus(task)" >Change status</button> 
+          <button ng-hide="todoController.NotUserTask(task)" class="destroy" ng-click="todoController.DestroyTask(task)">Destroy</button>
         </td> 
     </tr>
     </tbody>
   </table>
          <label>
-          <input type="radio" ng-model="type_of_state" value="" ng-change="logController.ChangeStateFilter(type_of_state)">
+          <input type="radio" ng-model="type_of_state" value="" ng-change="todoController.ChangeStateFilter(type_of_state)">
           All
          </label>
         <label>
-          <input type="radio" ng-model="type_of_state" value="active" ng-change="logController.ChangeStateFilter(type_of_state)">
+          <input type="radio" ng-model="type_of_state" value="active" ng-change="todoController.ChangeStateFilter(type_of_state)">
           Active
         </label>
         <label>
-          <input type="radio" ng-model="type_of_state" value="done" ng-change="logController.ChangeStateFilter(type_of_state)">
+          <input type="radio" ng-model="type_of_state" value="done" ng-change="todoController.ChangeStateFilter(type_of_state)">
           Done
         </label>
- 
