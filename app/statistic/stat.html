@@ -3,19 +3,41 @@
 		  <nav class="navbar navbar-inverse">
 			  <div class="container-fluid">
 			    <ul class="nav navbar-nav">
-			      <li><a ui-sref="log">Todo</a></li>
+			      <li><a ui-sref="log">To Do</a></li>
 			      <li><a ui-sref="stat">Statistic</a></li>
 			    </ul>
 			    <ul class="nav navbar-nav navbar-right">
+			      <li><a>{{statController.selectedUser}}</a></li>
 			      <li><a ui-sref="home"><span class="glyphicon glyphicon-log-in"></span>  Logout</a></li>
 			    </ul>
 			  </div>
 			</nav>   
 
 {{ statController.Statats() }}   
-my_done: {{ statController.my_done }} ( {{statController.my_done_proc| number : 2}} %) <br/>
-my_active: {{ statController.my_active }} ( {{statController.my_active_proc| number : 2}} %)<br/>
-global_done: {{ statController.global_done }} ( {{statController.global_done_proc| number : 2}} %)<br/>
-global_active: {{ statController.global_active }} ( {{statController.global_active_proc | number : 2 }} %)<br/>
+<div class="container">
+  <h2>Statistic Table</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="text-center">Active</th>
+        <th class="text-center">Done</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="text-center"><h5><b>My</b></h5></td>
+        <td class="text-center">{{ statController.my_active}} ( {{statController.my_active_proc | number : 2 }} %)</td>
+        <td class="text-center">{{ statController.my_done  }} ( {{statController.my_done_proc| number : 2}} %)    </td>
+      </tr>
+      <tr>
+        <td class="text-center"><h5><b>Global</b></h5></td>
+        <td class="text-center">{{ statController.global_active}} ( {{statController.global_active_proc | number : 2 }} %)</td>
+        <td class="text-center">{{ statController.global_done  }} ( {{statController.global_done_proc| number : 2}} %)    </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 </body>

@@ -42,6 +42,7 @@ export default class LogController{
   }
   
   GetUser(){
+    console.log("get_user_log.controler")
     return this.selectedUser;
   }
   
